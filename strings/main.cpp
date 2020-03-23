@@ -10,6 +10,12 @@
 #include <fstream> // needed for file
 #include "utils.h"
 
+//Necesary includes for task based parallelism 
+#include "farm.h"
+#include "task.h"
+#include "messagetask.h"
+#include <mutex> // to protect the queue of tasks
+
 using std::cout;
 using std::endl;
 using std::string;
@@ -18,6 +24,7 @@ using std::chrono::duration_cast;
 using std::chrono::milliseconds;
 using std::chrono::steady_clock;
 using std::ofstream;
+using std::to_string;
 
 //define the alias for the clock type we're going to use
 typedef std::chrono::steady_clock the_clock;
@@ -228,6 +235,9 @@ void Rabin_Karp(const string& pat, const string& text)
 }
 
 int main(int argc, char *argv[]) {
+	/*
+	//STRING SEARCH DEFAULT CODE
+
 	string text;//declare text as a string
 	float time_taken[2];
 	string FileName = "";
@@ -377,5 +387,24 @@ int main(int argc, char *argv[]) {
 		cout << "book " << i << endl;
 	}	
 	system("pause");
+	return 0;
+	*/
+	//THREAD BASED PARALLELEISM CODE
+	// Example: create and run a single task
+	Task* t = new MessageTask("hello, my adorable little hamster");
+	cout << "Running one task...\n";
+	t->run();
+	delete t;
+
+	// Example: run a load of tasks using a farm
+	Farm f;
+	for (int i = 0; i < 200; ++i)
+	{
+		f.add_task(new MessageTask("I am task " + to_string(i)));
+	}
+	cout << "Running task farm...\n";
+	f.run();
+	cout << "Tasks complete!\n";
+
 	return 0;
 }

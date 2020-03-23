@@ -21,9 +21,24 @@
     <ClCompile Include="utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="farm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="messagetask.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="farm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="messagetask.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="task.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

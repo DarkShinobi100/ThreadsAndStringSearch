@@ -146,10 +146,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="farm.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="messagetask.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="farm.h" />
+    <ClInclude Include="messagetask.h" />
+    <ClInclude Include="task.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

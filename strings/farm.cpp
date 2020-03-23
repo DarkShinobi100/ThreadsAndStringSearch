@@ -1,5 +1,6 @@
 #include "farm.h"
-
+#include <string>
+using std::string;
 // FIXME - You may need to add #includes here (e.g. <thread>)
 
 void Farm::add_task(Task *task)
@@ -8,7 +9,7 @@ void Farm::add_task(Task *task)
 }
 
 
-void Farm::run()
+void Farm::run(int volume, string& pat)
 {
 	auto lambda = [=] {
 		while (!TaskQueue.empty()) //while queue is not null
@@ -20,7 +21,7 @@ void Farm::run()
 			TaskQueue.pop();
 			lock_threads.unlock();
 			//call the run function from messagetask on that task
-			task->run();
+			task->run(int volume, string & pat);
 			//delete our copy
 			delete task;
 		}

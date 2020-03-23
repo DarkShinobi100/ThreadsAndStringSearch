@@ -1,0 +1,11 @@
+﻿  main.cpp
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(98): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(102): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(139): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(143): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(149): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(181): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(182): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(357): warning C4244: '=': conversion from '__int64' to 'float', possible loss of data
+c:\users\user\documents\c++\stringsearching\strings\main.cpp(368): warning C4244: '=': conversion from '__int64' to 'float', possible loss of data
+  strings.vcxproj -> C:\Users\User\Documents\C++\StringSearching\x64\Debug\strings.exe

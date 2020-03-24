@@ -13,7 +13,8 @@
 //Necesary includes for task based parallelism 
 #include "farm.h"
 #include "task.h"
-#include "messagetask.h"
+#include "BoyerMoore.h"
+#include "RabinKarp.h"
 #include <mutex> // to protect the queue of tasks
 
 using std::cout;
@@ -416,12 +417,13 @@ int main(int argc, char *argv[]) {
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			f.add_task(new MessageTask("I am book " + to_string(i + 1), i, pat[j]));
+			f.add_task(new BoyerMoore("I am book " + to_string(i + 1), i, pat[j]));
 		}		
 	}
-	cout << "Running task farm...\n";
+	cout << "Running Boyer Moore task farm...\n";
 	f.run();
 	cout << "Tasks complete!\n";
+
 
 	return 0;
 }

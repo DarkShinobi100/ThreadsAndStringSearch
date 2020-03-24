@@ -24,7 +24,10 @@
     <ClCompile Include="farm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="messagetask.cpp">
+    <ClCompile Include="BoyerMoore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RabinKarp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,10 +38,13 @@
     <ClInclude Include="farm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="messagetask.h">
+    <ClInclude Include="task.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="task.h">
+    <ClInclude Include="BoyerMoore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RabinKarp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,10 +1,7 @@
-﻿  farm.cpp
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\farm.cpp(30,20): warning C4018: '<': signed/unsigned mismatch
-  messagetask.cpp
+﻿  messagetask.cpp
 C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(31,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(35,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(35,38): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
 C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(41,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(71,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(71,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(72,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
   strings.vcxproj -> C:\Users\User\Documents\C++\ThreadsAndStringSearch\x64\Debug\strings.exe

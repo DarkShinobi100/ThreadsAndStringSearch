@@ -390,23 +390,23 @@ int main(int argc, char *argv[]) {
 	return 0;
 	*/
 
-	string pat = "244";
+	string pat = "shido";
 
 	//THREAD BASED PARALLELEISM CODE
 	// Example: create and run a single task
-	Task* t = new MessageTask("hello, my adorable little hamster");
-	cout << "Running one task...\n";
-	t->run(1,pat);
-	delete t;
+	//Task* t = new MessageTask("hello, my adorable little hamster",0,pat);
+	//cout << "Running one task...\n";
+	//t->run(1,pat);
+	//delete t;
 
 	// Example: run a load of tasks using a farm
 	Farm f;
 	for (int i = 0; i < std::thread::hardware_concurrency()-1; ++i)
 	{
-		f.add_task(new MessageTask("I am task " + to_string(i)));
+		f.add_task(new MessageTask("I am book " + to_string(i + 1),i,pat));
 	}
 	cout << "Running task farm...\n";
-	f.run(1, pat);
+	f.run();
 	cout << "Tasks complete!\n";
 
 	return 0;

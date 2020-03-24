@@ -9,7 +9,7 @@ void Farm::add_task(Task *task)
 }
 
 
-void Farm::run(int volume, string& pat)
+void Farm::run()
 {
 	auto lambda = [=] {
 		while (!TaskQueue.empty()) //while queue is not null
@@ -21,7 +21,7 @@ void Farm::run(int volume, string& pat)
 			TaskQueue.pop();
 			lock_threads.unlock();
 			//call the run function from messagetask on that task
-			task->run(int volume, string & pat);
+			task->run();
 			//delete our copy
 			delete task;
 		}

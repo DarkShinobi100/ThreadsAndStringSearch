@@ -13,19 +13,23 @@ using std::string;
 class MessageTask : public Task
 {
 public:
-	MessageTask(const std::string& message)
+	MessageTask(const std::string& message, const int& volume, const std::string& pat)
 		: message_(message)
+		, volume_(volume)
+		, pat_(pat)
 	{
 	}
 
-	void run(int volume, string& pat);
-	void loadBook(int volume);
-	void find_bm_multiple(const string& pat);
-	void Rabin_Karp(const string& pat);
+	void run();
+	void loadBook();
+	void find_bm_multiple();
+	void Rabin_Karp();
 
 private:
 	const std::string message_;
 	std::string text = "";
+	const int volume_;
+	const std::string pat_;
 };
 
 #endif

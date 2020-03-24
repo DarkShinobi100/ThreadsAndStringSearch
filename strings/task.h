@@ -14,10 +14,10 @@ public:
 	}
 
 	/** Perform the task. Subclasses must override this. */
-	virtual void run(int volume,string& pat) = 0;
-	virtual void loadBook(int volume) = 0;
-	virtual void find_bm_multiple(const string& pat) = 0;
-	virtual void Rabin_Karp(const string& pat) = 0;
+	virtual void run() = 0;
+	virtual void loadBook() = 0;
+	virtual void find_bm_multiple() = 0;
+	virtual void Rabin_Karp() = 0;
 
 private:
 

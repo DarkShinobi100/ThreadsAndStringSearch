@@ -23,7 +23,7 @@ public:
 	/** Run all the tasks in the farm.
 	    This method only returns once all the tasks in the farm
 		have been completed. */
-	void run(int volume, string& pat);
+	void run();
 
 private:
 	std::queue<Task*> TaskQueue;

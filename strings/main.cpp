@@ -390,7 +390,18 @@ int main(int argc, char *argv[]) {
 	return 0;
 	*/
 
-	string pat = "shido";
+	string pat[10];
+	pat[0] = "244";
+	pat[1] = "Tohka";
+	pat[2] = "Origami";
+	pat[3] = "Yoshino";
+	pat[4] = "Shido";
+	pat[5] = "Spirit";
+	pat[6] = "DEM";
+	pat[7] = "Angel";
+	pat[8] = "Battle";
+	pat[9] = "Blade";
+
 
 	//THREAD BASED PARALLELEISM CODE
 	// Example: create and run a single task
@@ -403,7 +414,10 @@ int main(int argc, char *argv[]) {
 	Farm f;
 	for (int i = 0; i < std::thread::hardware_concurrency()-1; ++i)
 	{
-		f.add_task(new MessageTask("I am book " + to_string(i + 1),i,pat));
+		for (int j = 0; j < 10; j++)
+		{
+			f.add_task(new MessageTask("I am book " + to_string(i + 1), i, pat[j]));
+		}		
 	}
 	cout << "Running task farm...\n";
 	f.run();

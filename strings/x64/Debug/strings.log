@@ -1,7 +1,10 @@
-﻿  messagetask.cpp
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(31,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(35,38): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(41,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(71,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\messagetask.cpp(72,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+﻿  main.cpp
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(105,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(109,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(146,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(150,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(156,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(188,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(189,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(415,20): warning C4018: '<': signed/unsigned mismatch
   strings.vcxproj -> C:\Users\User\Documents\C++\ThreadsAndStringSearch\x64\Debug\strings.exe

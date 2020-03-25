@@ -146,15 +146,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BoyerMoore.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RabinKarp.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BoyerMoore.h" />
-    <ClInclude Include="RabinKarp.h" />
-    <ClInclude Include="task.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

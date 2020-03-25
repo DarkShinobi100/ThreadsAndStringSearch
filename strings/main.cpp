@@ -265,7 +265,7 @@ void finished_book(int volume)
 	{
 		result_cv.wait(lock);
 	}
-	cout << "Book: " << volume +1<< "complete" << endl;	
+	cout << "Book: " << volume +1<< "complete " << endl;	
 }
 void old_string_Search()
 {
@@ -422,10 +422,8 @@ void old_string_Search()
 	system("pause");
 }
 
-int main(int argc, char *argv[]) 
+void Threaded_String_search()
 {
-	//old_string_Search();
-
 	string pat[20];
 	pat[0] = "244";
 	pat[1] = "Tohka";
@@ -457,20 +455,20 @@ int main(int argc, char *argv[])
 	string FileName = "";
 	for (int i = 0; i < 6; i++)
 	{
-		FileName = "DateALiveVolume" + std::to_string(i + 1) + ".txt";
+		FileName = "DateALiveVolume" + std::to_string(i+1) + ".txt";
 		load_file(FileName, text);
 		cout << "String size: " << text.size() << endl;
 
-	//	printThread = thread(finished_book,i);
+		printThread = thread(finished_book, i);
 
 		for (int j = 0; j < 10; j++)
 		{
 			//create thread and give it the function to run
-			myThread[j] = thread(find_bm_multiple,pat[j], text);			
-			myThread[j+10] = thread(Rabin_Karp, pat[j+10], text);
+			myThread[j] = thread(find_bm_multiple, pat[j], text);
+			myThread[j + 10] = thread(Rabin_Karp, pat[j + 10], text);
 		}
 		//join the threads
-		for (int j = 0; j < 20; i++)
+		for (int j = 0; j < 20; j++)
 		{ //combine all threads
 			myThread[j].join();
 		}
@@ -480,10 +478,13 @@ int main(int argc, char *argv[])
 			result_cv.notify_one();
 		}
 
-	//	printThread.join();	
+		printThread.join();
 
 	}
-	
-	
+}
+int main(int argc, char *argv[]) 
+{
+	//old_string_Search();
+	Threaded_String_search();	
 	return 0;
 }

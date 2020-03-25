@@ -265,7 +265,7 @@ void finished_book(int volume)
 	{
 		result_cv.wait(lock);
 	}
-	cout << "Book: " << volume<< "complete" << endl;	
+	cout << "Book: " << volume +1<< "complete" << endl;	
 }
 void old_string_Search()
 {
@@ -426,7 +426,7 @@ int main(int argc, char *argv[])
 {
 	//old_string_Search();
 
-	string pat[10];
+	string pat[20];
 	pat[0] = "244";
 	pat[1] = "Tohka";
 	pat[2] = "Origami";
@@ -437,6 +437,16 @@ int main(int argc, char *argv[])
 	pat[7] = "Angel";
 	pat[8] = "Battle";
 	pat[9] = "Blade";
+	pat[10] = "244";
+	pat[11] = "Tohka";
+	pat[12] = "Origami";
+	pat[13] = "Yoshino";
+	pat[14] = "Shido";
+	pat[15] = "Spirit";
+	pat[16] = "DEM";
+	pat[17] = "Angel";
+	pat[18] = "Battle";
+	pat[19] = "Blade";
 
 
 	//THREAD BASED PARALLELEISM CODE
@@ -445,20 +455,19 @@ int main(int argc, char *argv[])
 	string text;//declare text as a string
 	//float time_taken[2];
 	string FileName = "";
-	for (int i = 0; i < 1; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		FileName = "DateALiveVolume" + std::to_string(i + 1) + ".txt";
 		load_file(FileName, text);
 		cout << "String size: " << text.size() << endl;
 
-		printThread = thread(finished_book,i);
+	//	printThread = thread(finished_book,i);
 
-		cout << "Boyer Moore" << endl;
-		for (int j = 0; j < 20; j+2)
+		for (int j = 0; j < 10; j++)
 		{
 			//create thread and give it the function to run
 			myThread[j] = thread(find_bm_multiple,pat[j], text);			
-			myThread[j+1] = thread(Rabin_Karp, pat[j], text);
+			myThread[j+10] = thread(Rabin_Karp, pat[j+10], text);
 		}
 		//join the threads
 		for (int j = 0; j < 20; i++)
@@ -471,7 +480,7 @@ int main(int argc, char *argv[])
 			result_cv.notify_one();
 		}
 
-		printThread.join();	
+	//	printThread.join();	
 
 	}
 	

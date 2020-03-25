@@ -38,7 +38,7 @@ typedef std::chrono::steady_clock the_clock;
 //my file to save values to
 ofstream my_file("Timings.csv");
 #define d 256 //number of characters in the english alphabet
-const int BOOKLIMIT = 6;
+int BOOKLIMIT = 1;
 const int PATTERNCOUNT = 20;
 
 vector<Position> BooyerMooreResults;
@@ -265,7 +265,7 @@ void finished_book(int volume)
 	{
 		result_cv.wait(lock);
 	}
-	cout << "Book: " << volume +1<< "complete " << endl;	
+	//cout << "Book: " << volume +1<< "complete " << endl;	
 }
 void old_string_Search()
 {
@@ -379,9 +379,12 @@ void Threaded_String_search()
 int main(int argc, char *argv[]) 
 {
 	float time_taken[2];
+	int counter = 0;
 	//set up headers for the file
-	my_file << "serial Time taken" << "," << "parallel Time taken" << endl;
+	my_file << "number of books"<<","<< "serial Time taken" << "," << "parallel Time taken" << endl;
 
+	for (int i = 0; i < 10000000; i++)
+	{
 	//time how long it takes to Search via serialised searching
 	the_clock::time_point start = the_clock::now();
 	old_string_Search();
@@ -389,7 +392,7 @@ int main(int argc, char *argv[])
 	time_taken[0] = duration_cast<milliseconds>(end - start).count();
 
 	//print the time taken
-	cout << "time taken to Search in serial " << time_taken[0] << "ms" << endl;
+	cout << "no book(s): " << BOOKLIMIT << " time taken to Search in serial " << time_taken[0] << "ms" << endl;
 
 	//time how long it takes to Search via parallel searching
 	start = the_clock::now();
@@ -397,8 +400,17 @@ int main(int argc, char *argv[])
 	end = the_clock::now();
 	time_taken[1] = duration_cast<milliseconds>(end - start).count();
 	//print the time taken
-	cout << "time taken to Search in parallel" << time_taken[1] << "ms" << endl << endl;
+	cout <<"no book(s): "<< BOOKLIMIT<< " time taken to Search in parallel " << time_taken[1] << "ms" << endl << endl;
 	//save to our file
-	my_file << time_taken[0] << "," << time_taken[1] << endl;	
+	my_file <<BOOKLIMIT<< "," << time_taken[0] << "," << time_taken[1] << endl;	
+		if (counter == 1000000)
+		{			
+			BOOKLIMIT++;
+			counter = 0;
+			my_file << "empty" << "," << "empty" << "," << "empty" << endl;
+		}
+		counter++;
+	}
+
 	return 0;
 }

@@ -6,12 +6,12 @@ C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(166,37): war
 C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(172,25): warning C4018: '<': signed/unsigned mismatch
 C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(207,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(208,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(389,64): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(392,64): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
           with
           [
               _Rep=__int64
           ]
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(398,64): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(401,64): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
           with
           [
               _Rep=__int64

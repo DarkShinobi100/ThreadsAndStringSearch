@@ -1,17 +1,17 @@
 ﻿  main.cpp
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(118,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(122,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(160,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(164,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(170,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(121,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(125,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(162,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(166,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(172,25): warning C4018: '<': signed/unsigned mismatch
 C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(207,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(208,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(400,66): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(389,64): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
           with
           [
               _Rep=__int64
           ]
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(411,66): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(398,64): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
           with
           [
               _Rep=__int64

@@ -9,13 +9,14 @@
 #include <vector>
 #include <fstream> // needed for file
 #include "utils.h"
+#include <mutex>
 
 //Necesary includes for task based parallelism 
-#include "farm.h"
 #include "task.h"
 #include "BoyerMoore.h"
 #include "RabinKarp.h"
 #include <mutex> // to protect the queue of tasks
+#include <thread>
 
 using std::cout;
 using std::endl;
@@ -26,6 +27,10 @@ using std::chrono::milliseconds;
 using std::chrono::steady_clock;
 using std::ofstream;
 using std::to_string;
+using std::thread;
+using std::mutex;
+using std::unique_lock;
+using std::condition_variable;
 
 //define the alias for the clock type we're going to use
 typedef std::chrono::steady_clock the_clock;
@@ -33,7 +38,14 @@ typedef std::chrono::steady_clock the_clock;
 //my file to save values to
 ofstream my_file("Timings.csv");
 #define d 256 //number of characters in the english alphabet
+vector<Position> BooyerMooreResults;
+vector<Position> RabinKarpeResults;
+mutex save_mutex;
 
+bool BooyerMoore_ready = false;
+bool RabinKarp_ready = false;
+
+condition_variable result_cv;
 /** Return first position of pat in text, or -1 if not found. */
 Position find_bruteforce(const string& pat, const string& text) {
 	Position pat_len = pat.size();
@@ -137,6 +149,7 @@ Position find_bm(const string& pat, const string& text) {
 /* skip ahead by the length of the string if we do not match.but keep looping through the whole file */
 void find_bm_multiple(const string& pat, const string& text) 
 {
+	cout << "BoyerMoore:" << endl;
 	Position pat_len = pat.size();
 	Position text_len = text.size();
 	vector<Position> Results;
@@ -173,19 +186,24 @@ void find_bm_multiple(const string& pat, const string& text)
 			}
 		}
 		if (j == pat_len) {
+			save_mutex.lock();
 			 // Matched here add to the vector
-			Results.push_back(i);
+			BooyerMooreResults.push_back(i);
+			save_mutex.unlock();
 			//print results to the screen
 			//cout << "Match found: " << Results[Results.size() - 1] << endl;
 			NumberofMatches++;
 		}
 	}
+	BooyerMoore_ready = true;
 	cout << pat << " was found: " << NumberofMatches << " time(s)" << endl;
 }
 
 /** read the patern and calculate a value for it, read the next cunk of the file we are searching and compare the two. slide along by 1 and calculate again */
 void Rabin_Karp(const string& pat, const string& text) 
 {
+	cout << "Rabin Karp:"<< endl;
+
 	int PatternLength = pat.size();
 	int TextLength = text.size();
 	int PrimeNumber = 2;
@@ -221,6 +239,10 @@ void Rabin_Karp(const string& pat, const string& text)
 			{
 				//cout << "Pattern found at index: " << i << endl;
 				NumberofMatches++;
+				save_mutex.lock();
+				// Matched here add to the vector
+				RabinKarpeResults.push_back(i);
+				save_mutex.unlock();
 			}
 		}
 		if (i < TextLength - PatternLength)
@@ -232,11 +254,21 @@ void Rabin_Karp(const string& pat, const string& text)
 			}
 		}
 	}
+	RabinKarp_ready = true;
 	cout << pat << " was found: " << NumberofMatches << " time(s)" << endl;
 }
 
-int main(int argc, char *argv[]) {
-	/*
+void finished_book(int volume)
+{
+	unique_lock <mutex> lock(save_mutex);
+	while (!BooyerMoore_ready  && !RabinKarp_ready)
+	{
+		result_cv.wait(lock);
+	}
+	cout << "Book: " << volume<< "complete" << endl;	
+}
+void old_string_Search()
+{
 	//STRING SEARCH DEFAULT CODE
 
 	string text;//declare text as a string
@@ -244,7 +276,7 @@ int main(int argc, char *argv[]) {
 	string FileName = "";
 
 	string pat[100]; //pat = pattern we are looking for
-	pat[0] ="244";
+	pat[0] = "244";
 	pat[1] = "244";
 	pat[2] = "244";
 	pat[3] = "244";
@@ -253,7 +285,7 @@ int main(int argc, char *argv[]) {
 	pat[6] = "244";
 	pat[7] = "244";
 	pat[8] = "244";
-	pat[9] = "244"; 
+	pat[9] = "244";
 	// repeated these 10 values to get a consistent average for each one
 	pat[10] = "Tohka";
 	pat[11] = "Tohka";
@@ -345,15 +377,15 @@ int main(int argc, char *argv[]) {
 	pat[97] = "blade";
 	pat[98] = "blade";
 	pat[99] = "blade";
-	
+
 	//set up headers
-	my_file << "Character limit " << "," << "Boyer Moore Time taken"  << "," << "Rabin Karp Time taken" << endl;
+	my_file << "Character limit " << "," << "Boyer Moore Time taken" << "," << "Rabin Karp Time taken" << endl;
 	for (int i = 0; i < 17; i++)
 	{	//load_jute_book(text); //call the load function and pass it the file .txt
-		FileName ="DateALiveVolume" + std::to_string(i + 1) + ".txt";
+		FileName = "DateALiveVolume" + std::to_string(i + 1) + ".txt";
 		load_file(FileName, text);
 		cout << "String size: " << text.size() << endl;
-		for (int j = 0; j <100; j++)
+		for (int j = 0; j < 100; j++)
 		{
 			//Position pos = find_bruteforce(pat, text);
 			//Position pos = find_skipping(pat, text);
@@ -368,8 +400,8 @@ int main(int argc, char *argv[]) {
 			time_taken[0] = duration_cast<milliseconds>(end - start).count();
 
 			//print the time taken
-			cout << "time taken to Search " << time_taken[0] << "ms"<< endl;
-		//	system("pause");
+			cout << "time taken to Search " << time_taken[0] << "ms" << endl;
+			//	system("pause");
 
 			cout << "Rabin Karp" << endl;
 			// time how long it takes to Search via Rabin karp
@@ -378,18 +410,21 @@ int main(int argc, char *argv[]) {
 			end = the_clock::now();
 			time_taken[1] = duration_cast<milliseconds>(end - start).count();
 			//print the time taken
-			cout << "time taken to Search " << time_taken[1] << "ms" << endl<<endl;
+			cout << "time taken to Search " << time_taken[1] << "ms" << endl << endl;
 			my_file << text.size() << "," << time_taken[0] << "," << time_taken[1] << endl;
 
-		//	cout << endl << endl;
-			//show_context(text, pos);			
+			//	cout << endl << endl;
+				//show_context(text, pos);			
 		}
-		
+
 		cout << "book " << i << endl;
-	}	
+	}
 	system("pause");
-	return 0;
-	*/
+}
+
+int main(int argc, char *argv[]) 
+{
+	//old_string_Search();
 
 	string pat[10];
 	pat[0] = "244";
@@ -405,25 +440,41 @@ int main(int argc, char *argv[]) {
 
 
 	//THREAD BASED PARALLELEISM CODE
-	// Example: create and run a single task
-	//Task* t = new MessageTask("hello, my adorable little hamster",0,pat);
-	//cout << "Running one task...\n";
-	//t->run(1,pat);
-	//delete t;
-
-	// Example: run a load of tasks using a farm
-	Farm f;
-	for (int i = 0; i < std::thread::hardware_concurrency()-1; ++i)
+	thread myThread[20];
+	thread printThread;
+	string text;//declare text as a string
+	//float time_taken[2];
+	string FileName = "";
+	for (int i = 0; i < 1; i++)
 	{
-		for (int j = 0; j < 10; j++)
+		FileName = "DateALiveVolume" + std::to_string(i + 1) + ".txt";
+		load_file(FileName, text);
+		cout << "String size: " << text.size() << endl;
+
+		printThread = thread(finished_book,i);
+
+		cout << "Boyer Moore" << endl;
+		for (int j = 0; j < 20; j+2)
 		{
-			f.add_task(new BoyerMoore("I am book " + to_string(i + 1), i, pat[j]));
-		}		
+			//create thread and give it the function to run
+			myThread[j] = thread(find_bm_multiple,pat[j], text);			
+			myThread[j+1] = thread(Rabin_Karp, pat[j], text);
+		}
+		//join the threads
+		for (int j = 0; j < 20; i++)
+		{ //combine all threads
+			myThread[j].join();
+		}
+
+		if (RabinKarp_ready && BooyerMoore_ready)
+		{
+			result_cv.notify_one();
+		}
+
+		printThread.join();	
+
 	}
-	cout << "Running Boyer Moore task farm...\n";
-	f.run();
-	cout << "Tasks complete!\n";
-
-
+	
+	
 	return 0;
 }

@@ -23,7 +23,7 @@ void BoyerMoore::loadBook() {
 void BoyerMoore::find_bm_multiple() {
 	Position pat_len = pat_.size();
 	Position text_len = text.size();
-	vector<Position> Results;
+
 	int NumberofMatches = 0;
 	int skip[256];
 	for (int i = 0; i < 256; ++i)
@@ -57,14 +57,16 @@ void BoyerMoore::find_bm_multiple() {
 			}
 		}
 		if (j == pat_len) {
+		//	BooyerMoore_mutex_.lock();				
 			// Matched here add to the vector
-			Results.push_back(i);
+			BooyerMooreResults_.push_back(i);
+		//	BooyerMoore_mutex_.unlock();
 			//print results to the screen
 			//cout << "Match found: " << Results[Results.size() - 1] << endl;
 			NumberofMatches++;
 		}
 	}
-	cout << pat_ << " was found: " << NumberofMatches << " time(s)" << endl;
+	cout << pat_ << " was found: " << BooyerMooreResults_.size() << " time(s)" << endl;
 }
 
 void BoyerMoore::Rabin_Karp() {

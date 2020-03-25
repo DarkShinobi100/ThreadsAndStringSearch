@@ -58,6 +58,10 @@ void RabinKarp::Rabin_Karp() {
 			}
 			if (j == PatternLength)
 			{
+			//	RabinKarp_mutex_.lock();
+				// Matched here add to the vector
+				RabinKarpeResults_.push_back(i);
+			//	RabinKarp_mutex_.unlock();
 				//cout << "Pattern found at index: " << i << endl;
 				NumberofMatches++;
 			}
@@ -71,5 +75,5 @@ void RabinKarp::Rabin_Karp() {
 			}
 		}
 	}
-	cout << pat_ << " was found: " << NumberofMatches << " time(s)" << endl;
+	cout << pat_ << " was found: " << RabinKarpeResults_.size() << " time(s)" << endl;
 }

@@ -147,14 +147,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BoyerMoore.cpp" />
-    <ClCompile Include="farm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RabinKarp.cpp" />
     <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BoyerMoore.h" />
-    <ClInclude Include="farm.h" />
     <ClInclude Include="RabinKarp.h" />
     <ClInclude Include="task.h" />
     <ClInclude Include="utils.h" />

@@ -1,18 +1,19 @@
-﻿  BoyerMoore.cpp
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\BoyerMoore.cpp(31,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\BoyerMoore.cpp(35,38): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\BoyerMoore.cpp(41,25): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(106,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(110,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(147,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(151,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(157,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(189,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(190,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(416,20): warning C4018: '<': signed/unsigned mismatch
-  RabinKarp.cpp
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\RabinKarp.cpp(28,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\RabinKarp.cpp(29,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
+﻿  main.cpp
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(118,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(122,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(160,13): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(164,37): warning C4244: '=': conversion from 'Position' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(170,25): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(207,32): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(208,30): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(400,66): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+C:\Users\User\Documents\C++\ThreadsAndStringSearch\strings\main.cpp(411,66): warning C4244: '=': conversion from '_Rep' to 'float', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
   strings.vcxproj -> C:\Users\User\Documents\C++\ThreadsAndStringSearch\x64\Debug\strings.exe

@@ -2,10 +2,12 @@
 #define RABINKARP_H
 
 #include <string>
-
+#include <mutex>
 #include "task.h"
+#include <vector>
 using std::string;
-
+using std::mutex;
+using std::vector;
 //needed to load book
 #include "utils.h"
 
@@ -13,10 +15,12 @@ using std::string;
 class RabinKarp : public Task
 {
 public:
-	RabinKarp(const std::string& message, const int& volume, const std::string& pat)
+	RabinKarp(const std::string& message, const int& volume, const std::string& pat, vector<Position> RabinKarpeResults)
 		: message_(message)
 		, volume_(volume)
 		, pat_(pat)
+		, RabinKarpeResults_(RabinKarpeResults)
+		//, RabinKarp_mutex_(RabinKarp_mutex)
 	{
 	}
 
@@ -30,6 +34,8 @@ private:
 	std::string text = "";
 	const int volume_;
 	const std::string pat_;
+	vector<Position> RabinKarpeResults_;
+	
 };
 
 #endif

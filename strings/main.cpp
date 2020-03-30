@@ -10,11 +10,9 @@
 #include <fstream> // needed for file
 #include "utils.h"
 #include <mutex>
+#include <condition_variable>
 
 //Necesary includes for task based parallelism 
-#include "task.h"
-#include "BoyerMoore.h"
-#include "RabinKarp.h"
 #include <mutex> // to protect the queue of tasks
 #include <thread>
 
@@ -266,6 +264,8 @@ void finished_book(int volume)
 		result_cv.wait(lock);
 	}
 	//cout << "Book: " << volume +1<< "complete " << endl;	
+	BooyerMoore_ready = false;
+	RabinKarp_ready = false;
 }
 void old_string_Search()
 {
@@ -383,7 +383,18 @@ int main(int argc, char *argv[])
 	//set up headers for the file
 	my_file << "number of books"<<","<< "serial Time taken" << "," << "parallel Time taken" << endl;
 
-	for (int i = 0; i < 10000000; i++)
+	//user input to select number of books searched 
+	cout << "Search how many books (1-9)" << endl;
+	std::cin >> BOOKLIMIT;
+
+	while (BOOKLIMIT < 1 || BOOKLIMIT > 9) {
+		cout << endl << "ERROR Incorrect number. Search how many books (1-9)" << endl;
+		std::cin >> BOOKLIMIT;
+
+	}
+
+	//After confiming we are in the correct range, begin to search
+	for (int i = 0; i < (10000 * BOOKLIMIT); i++)
 	{
 	//time how long it takes to Search via serialised searching
 	the_clock::time_point start = the_clock::now();
@@ -403,7 +414,7 @@ int main(int argc, char *argv[])
 	cout <<"no book(s): "<< BOOKLIMIT<< " time taken to Search in parallel " << time_taken[1] << "ms" << endl << endl;
 	//save to our file
 	my_file <<BOOKLIMIT<< "," << time_taken[0] << "," << time_taken[1] << endl;	
-		if (counter == 1000000)
+		if (counter == 10000)
 		{			
 			BOOKLIMIT++;
 			counter = 0;
